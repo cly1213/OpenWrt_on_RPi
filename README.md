@@ -22,18 +22,50 @@ Use the "passwd" command to set up a new password
 in order to prevent unauthorized SSH logins.
 --------------------------------------------------
 root@OpenWrt:~#
+```
 
+```
+root@OpenWrt:~# ls /etc/config/
+dhcp             firewall.bk      network.bk       rpcd             uhttpd
+dropbear         luci             openvpn          system           wireless
+firewall         network          openvpn_recipes  ucitrack         wireless.bk
 ```
 
 ## Hardware
 - Raspberry Pi 
 - wifi adapter
+  - MT7601 (doesn't support AP mode)
+  - RT5370 (it works!)
 - usb ethernet adapter
 - ethernet cable
 - PC(Windows)
 
 ## Firmware
 https://openwrt.org/toh/raspberry_pi_foundation/raspberry_pi
+
+## config
+
+```
+root@OpenWrt:~# ls /etc/config/
+dhcp             firewall.bk      network.bk       rpcd             uhttpd
+dropbear         luci             openvpn          system           wireless
+firewall         network          openvpn_recipes  ucitrack         wireless.bk
+```
+
+### network
+### firewall
+### wireless
+
+## command
+```
+$ lsusb
+
+$ ifconfig wlan1 up
+
+$ uci commit wireless
+
+$ wifi
+```
 
 ## ifconfig
 ```
@@ -72,13 +104,13 @@ wlan0     Link encap:Ethernet  HWaddr B8:27:EB:04:23:6E
           TX packets:9342 errors:0 dropped:0 overruns:0 carrier:0
           collisions:0 txqueuelen:1000
           RX bytes:18807992 (17.9 MiB)  TX bytes:1380188 (1.3 MiB)
+```
 
-root@OpenWrt:~# lsusb
-Bus 001 Device 004: ID 0424:7800
-Bus 001 Device 003: ID 0424:2514
-Bus 001 Device 005: ID 148f:7601 MediaTek 802.11 n WLAN
-Bus 001 Device 002: ID 0424:2514
-Bus 001 Device 001: ID 1d6b:0002 Linux 5.4.179 dwc_otg_hcd DWC OTG Controller
+```
+root@OpenWrt:~# opkg install kmod-mt7601u
+```
+
+```
 root@OpenWrt:~# ifconfig wlan1 up
 root@OpenWrt:~# ifconfig
 br-lan    Link encap:Ethernet  HWaddr B8:27:EB:51:76:3B
@@ -125,3 +157,12 @@ wlan1     Link encap:Ethernet  HWaddr 1C:BF:CE:70:4D:7C
 
 root@OpenWrt:~#
 ```
+
+## Ref
+https://elinux.org/RPi_USB_Wi-Fi_Adapters
+
+## Test
+RT5572
+RT3070
+MT7612U
+
