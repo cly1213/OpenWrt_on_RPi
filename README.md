@@ -3,7 +3,6 @@
 https://openwrt.org/
 
 ## Turn Raspberry Pi into Router with OpenWrt
-
 ```
 BusyBox v1.33.2 (2022-02-16 20:29:10 UTC) built-in shell (ash)
 
@@ -36,18 +35,16 @@ root@OpenWrt:~#
 https://openwrt.org/toh/raspberry_pi_foundation/raspberry_pi
 
 ## config
-
 ```
 root@OpenWrt:~# ls /etc/config/
 dhcp             firewall.bk      network.bk       rpcd             uhttpd
 dropbear         luci             openvpn          system           wireless
 firewall         network          openvpn_recipes  ucitrack         wireless.bk
 ```
-### network
-### firewall
+### /etc/config/network
 
+### /etc/config/firewall
 Change one thing: option input 'ACCEPT' 
-
 ```
 config zone
         option name 'wan'
@@ -60,7 +57,7 @@ config zone
         list network 'wan6'
         list network 'wwan'
 ```
-### wireless
+### /etc/config/wireless
 
 ## command
 ```
